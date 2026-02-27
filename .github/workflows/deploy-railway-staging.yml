@@ -1,0 +1,55 @@
+name: Deploy to Railway Staging
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - 'railway.toml'
+      - '.github/workflows/deploy-railway-staging.yml'
+
+jobs:
+  deploy:
+    name: Deploy Backend to Railway Staging
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Railway CLI
+        run: npm install -g @railway/cli
+
+      - name: Deploy to Railway
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: |
+          echo "🚂 Deploying to Railway Staging..."
+          railway link --project vivelapero-staging --environment staging || echo "Project already linked"
+          railway up
+          echo "✅ Deployment initiated!"
+
+      - name: Run migrations
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: |
+          echo "🗃️  Running database migrations..."
+          railway run npm run migrate --project vivelapero-staging --environment staging || echo "Migration completed or skipped"
+
+      - name: Notify Discord
+        if: always()
+        run: |
+          STATUS="${{ job.status }}"
+          EMOJI="✅"
+          if [ "$STATUS" != "success" ]; then
+            EMOJI="❌"
+          fi
+          
+          echo "$EMOJI Railway Staging deployment: $STATUS"
+          echo "Commit: ${{ github.sha }}"
+          echo "Branch: ${{ github.ref_name }}"

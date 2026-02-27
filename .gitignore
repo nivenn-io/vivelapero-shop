@@ -54,3 +54,17 @@ docker-compose.override.yml
 # Secrets
 *.pem
 *.key
+
+# Railway
+.railway/
+
+# Backups
+backups/
+*.sql
+*.sql.gz
+*.dump
+
+# Temporary
+tmp/
+temp/
+.cache/

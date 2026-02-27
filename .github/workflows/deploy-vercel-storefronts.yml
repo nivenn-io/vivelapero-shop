@@ -1,0 +1,81 @@
+name: Deploy Storefronts to Vercel
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'storefront-vivelapero/**'
+      - 'storefront-aperosexy/**'
+      - 'shared/**'
+      - '.github/workflows/deploy-vercel-storefronts.yml'
+
+jobs:
+  deploy-vivelapero:
+    name: Deploy Vive l'Apéro Storefront
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_VIVELAPERO }}
+        run: |
+          echo "🚀 Deploying Vive l'Apéro storefront to Vercel..."
+          cd storefront-vivelapero
+          vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+          vercel build --prod --token=$VERCEL_TOKEN
+          vercel deploy --prod --token=$VERCEL_TOKEN
+          echo "✅ Deployment complete!"
+
+      - name: Notify
+        if: always()
+        run: |
+          echo "${{ job.status == 'success' && '✅' || '❌' }} Vive l'Apéro storefront: ${{ job.status }}"
+          echo "URL: https://vivelapero.fr"
+
+  deploy-aperosexy:
+    name: Deploy Apero Sexy Storefront
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_APEROSEXY }}
+        run: |
+          echo "🚀 Deploying Apero Sexy storefront to Vercel..."
+          cd storefront-aperosexy
+          vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+          vercel build --prod --token=$VERCEL_TOKEN
+          vercel deploy --prod --token=$VERCEL_TOKEN
+          echo "✅ Deployment complete!"
+
+      - name: Notify
+        if: always()
+        run: |
+          echo "${{ job.status == 'success' && '✅' || '❌' }} Apero Sexy storefront: ${{ job.status }}"
+          echo "URL: https://aperosexy.fr"

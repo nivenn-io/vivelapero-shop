@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: vivelapero-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: medusa_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-medusa_dev_password_change_me}
+      POSTGRES_DB: medusa_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U medusa_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: vivelapero-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  medusa:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: development
+    container_name: vivelapero-medusa
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://medusa_user:${POSTGRES_PASSWORD:-medusa_dev_password_change_me}@postgres:5432/medusa_db
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: ${JWT_SECRET:-dev_jwt_secret_change_me}
+      COOKIE_SECRET: ${COOKIE_SECRET:-dev_cookie_secret_change_me}
+      MEDUSA_ADMIN_ONBOARDING_TYPE: default
+      STORE_CORS: http://localhost:3000,http://localhost:3001
+      ADMIN_CORS: http://localhost:7001,http://localhost:9000
+    ports:
+      - "9000:9000"  # API
+      - "7001:7001"  # Admin
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+      - medusa_uploads:/app/uploads
+    command: npm run dev
+
+volumes:
+  postgres_data:
+  redis_data:
+  medusa_uploads:
