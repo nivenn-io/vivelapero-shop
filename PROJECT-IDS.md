@@ -46,32 +46,35 @@ Tous les identifiants et liens pour le projet vivelapero-shop.
 
 ## Railway
 
-### Staging Environment
+**Projet unique multi-environnements ✅**
 
-**Nom :** vivelapero-staging  
-**Project ID :** `7d85fbb5-4693-459a-bb97-27b4b02d1375`  
-**Dashboard :** https://railway.app/project/7d85fbb5-4693-459a-bb97-27b4b02d1375
+**Nom :** vivelapero  
+**Project ID :** `3d0d2ef7-a811-4a94-859e-8582e5782c4a`  
+**Dashboard :** https://railway.app/project/3d0d2ef7-a811-4a94-859e-8582e5782c4a  
+**Workspace :** NIVENN Projects (`85a4a9e4-276b-4b9b-8261-99da5a2aebce`)
 
-**Services créés ✅ :**
-- PostgreSQL 16 (ID: `87de2c4a-2131-4b3f-b84d-0ddc1f5b8b1f`)
-- Redis 7 (ID: `c2894e5f-c6a5-4c6a-9077-6d1e183123f3`)
-- Backend (ID: `fcf1530f-2558-4390-8255-1159b4285eb1`) — ⏳ À configurer
+### Environnements
 
-**Configuration Backend :** `.devops/RAILWAY-BACKEND-CONFIG.md`
+**Production** (ID: `b191a02d-b5f2-4989-81a2-0276de29c9ce`)
+- Custom domain : `api.vivelapero.fr`
 
-### Production Environment
+**Staging** (ID: `d4dc732a-4f73-4496-845e-075c8a4188ed`)
+- URL auto Railway
 
-**Nom :** vivelapero-production  
-**Project ID :** `ccde0103-65c6-4537-a8db-051bb0b96abb`  
-**Dashboard :** https://railway.app/project/ccde0103-65c6-4537-a8db-051bb0b96abb
+### Services
 
-**Services créés ✅ :**
-- PostgreSQL 16 (ID: `4bcd575b-d93b-484a-add5-7c8ea84331c8`)
-- Redis 7 (ID: `a0107eea-63a4-40bc-8a21-4bb3f8560448`)
-- Backend (ID: `4543113d-28f2-4912-9823-13ec56642f37`) — ⏳ À configurer
+**Backend** ✅ (ID: `6017c981-7c60-4d44-b099-ead04976e38c`)
+- Repository : nivenn-io/vivelapero-shop
+- Branch : main
+- ⏳ À configurer : Root directory, Build, Start, Variables
 
-**Domaine custom :** api.vivelapero.fr
+**PostgreSQL** ⏳ (À créer via Dashboard)
+- Click "New" → "Database" → "Add PostgreSQL"
 
+**Redis** ⏳ (À créer via Dashboard)
+- Click "New" → "Database" → "Add Redis"
+
+**Guide ajout databases :** `.devops/railway-add-databases.sh`  
 **Configuration Backend :** `.devops/RAILWAY-BACKEND-CONFIG.md`
 
 ---
