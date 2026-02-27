@@ -52,12 +52,12 @@ Tous les identifiants et liens pour le projet vivelapero-shop.
 **Project ID :** `7d85fbb5-4693-459a-bb97-27b4b02d1375`  
 **Dashboard :** https://railway.app/project/7d85fbb5-4693-459a-bb97-27b4b02d1375
 
-**Services créés ✅ :**
-- PostgreSQL 16 (ID: `cd6ccef6-0e22-4bc3-a2d9-d4d6717c22ad`)
-- Redis 7 (ID: `e681352f-a63b-4828-b76f-4824291aaa64`)
-- Backend (ID: `fcf1530f-2558-4390-8255-1159b4285eb1`)
+**Services :**
+- PostgreSQL 16 — ⏳ À créer via Dashboard (2 clics)
+- Redis 7 — ⏳ À créer via Dashboard (2 clics)
+- Backend ✅ (ID: `fcf1530f-2558-4390-8255-1159b4285eb1`)
 
-**Configuration à faire :** Voir `.devops/railway-config-guide.md`
+**Guide :** `.devops/RAILWAY-FIX-DATABASES.md`
 
 ### Production Environment
 
@@ -65,14 +65,14 @@ Tous les identifiants et liens pour le projet vivelapero-shop.
 **Project ID :** `ccde0103-65c6-4537-a8db-051bb0b96abb`  
 **Dashboard :** https://railway.app/project/ccde0103-65c6-4537-a8db-051bb0b96abb
 
-**Services créés ✅ :**
-- PostgreSQL 16 (ID: `a89b78c2-030a-4d1d-a151-2830e514e246`)
-- Redis 7 (ID: `d2f18857-bb2c-43c8-be19-91b9661219f3`)
-- Backend (ID: `4543113d-28f2-4912-9823-13ec56642f37`)
+**Services :**
+- PostgreSQL 16 — ⏳ À créer via Dashboard (2 clics)
+- Redis 7 — ⏳ À créer via Dashboard (2 clics)
+- Backend ✅ (ID: `4543113d-28f2-4912-9823-13ec56642f37`)
 
-**Domaine custom :** api.vivelapero.fr (à configurer)
+**Domaine custom :** api.vivelapero.fr (à configurer après)
 
-**Configuration à faire :** Voir `.devops/railway-config-guide.md`
+**Guide :** `.devops/RAILWAY-FIX-DATABASES.md`
 
 ---
 
