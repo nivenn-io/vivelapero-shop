@@ -46,15 +46,15 @@ Tous les identifiants et liens pour le projet vivelapero-shop.
 
 ## Railway
 
-**Project:** vivelapero (`3d0d2ef7-a811-4a94-859e-8582e5782c4a`)  
-**Dashboard:** https://railway.app/project/3d0d2ef7-a811-4a94-859e-8582e5782c4a
+**Project:** vivelapero (`7b6af845-8414-4ea8-9eed-abc77d29fb7a`)  
+**Dashboard:** https://railway.app/project/7b6af845-8414-4ea8-9eed-abc77d29fb7a
 
 **Environments:**
-- Production (`b191a02d-b5f2-4989-81a2-0276de29c9ce`) → api.vivelapero.fr
-- Staging (`d4dc732a-4f73-4496-845e-075c8a4188ed`)
+- Production (`1d773368-076f-4406-b6fa-836c4a677131`) → api.vivelapero.fr
+- Staging (`d6a6bd97-c30a-4372-a673-5efedcfd1bf1`)
 
 **Services:**
-- Backend ✅ (`6017c981-7c60-4d44-b099-ead04976e38c`) — Variables 7/9 configured
+- Backend ✅ (`6e8d1d1c-4818-443b-aa1e-334b2d8ec890`) — Variables 7/9 configured
 - PostgreSQL ⏳ — Add via Dashboard
 - Redis ⏳ — Add via Dashboard
 

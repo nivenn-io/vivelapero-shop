@@ -2,11 +2,11 @@
 
 ## ✅ Configured Automatically
 
-- **Railway project:** vivelapero (`3d0d2ef7-a811-4a94-859e-8582e5782c4a`)
+- **Railway project:** vivelapero (`7b6af845-8414-4ea8-9eed-abc77d29fb7a`)
 - **Environments:** production + staging  
 - **Service Backend:** Created + 7/9 variables configured per environment
 
-**Dashboard:** https://railway.app/project/3d0d2ef7-a811-4a94-859e-8582e5782c4a
+**Dashboard:** https://railway.app/project/7b6af845-8414-4ea8-9eed-abc77d29fb7a
 
 ---
 
